@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="Button1" value="确定" />
+		<div id="divTip">
+			
+		</div>
+	</body>
+</html>
+	<script type="text/javascript" >
+        $(function () {
+            $("#Button1").click(function () {
+                $.getJSON("UserInfo.json", function (data) {
+                    $("#divTip").empty();
+                    var strHtml = "";
+                    $.each(data, function (infoIndex, info) {
+                        strHtml += "姓名：" + info["name"] + "<br>";
+                        strHtml += "性别：" + info["sex"] + "<br>";
+                        strHtml += "邮箱：" + info["email"] + "<br>";
+                    })
+                    $("#divTip").append(strHtml);
+                })
+            })
+        })
+</script>
